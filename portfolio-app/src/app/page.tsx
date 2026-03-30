@@ -92,14 +92,14 @@ const systemInterfaces = [
     name: "Flower Shop Next",
     description:
       "A modern and responsive frontend built with Next.js for a local flower shop.",
-    stack: "Next.js, React, TypeScript",
+    stack: "Next.js, TypeScript, GitHub Actions",
     link: "https://apoorv-x12.github.io/flower-shop-next/",
   },
   {
-    name: "Terminal Portfolio (This Site)",
+    name: "Terminal Portfolio",
     description:
-      "Interactive terminal-style portfolio built with Next.js and TypeScript, featuring command-driven UI state, responsive layout, and deployment via GitHub Pages CI/CD.",
-    stack: "Next.js, TypeScript, State-driven UI, GitHub Actions",
+      "Interactive terminal-style portfolio built with Next.js and TypeScript.",
+    stack: "Next.js, State-driven UI",
     link: "https://apoorv-x12.github.io/portfolio/",
   },
 ];
@@ -170,7 +170,7 @@ export default function Home() {
 
           <div className="grid gap-2 rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm text-slate-100 sm:grid-cols-2">
             <p><span className="text-cyan-200">Experience:</span> Software Engineer @ Eli Lilly (2023–2026)</p>
-            <p><span className="text-cyan-200">Education:</span> B.Tech CSE — VIT (CGPA: 9.18)</p>
+            <p><span className="text-cyan-200">Education:</span> B.Tech CSE — VIT (2019-2023, CGPA: 9.18)</p>
             <p><span className="text-cyan-200">Open to:</span> Backend / Full Stack · Startups · AI products · Remote &amp; Contract</p>
             <p><span className="text-cyan-200">Location:</span> India</p>
           </div>
@@ -201,23 +201,25 @@ export default function Home() {
 
             <div className="mt-3 space-y-2">
               <p className="text-xs uppercase tracking-[0.12em] text-cyan-300/70">System Interfaces</p>
-              {systemInterfaces.map((project) => (
-                <a
-                  key={project.name}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open project: ${project.name}`}
-                  className="block cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-3 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <h3 className="text-cyan-100 break-words">{project.name}</h3>
-                    <span className="text-xs uppercase tracking-[0.12em] text-emerald-200 shrink-0">open ↗</span>
-                  </div>
-                  <p className="text-sm text-slate-300">{project.description}</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.12em] text-slate-400">{project.stack}</p>
-                </a>
-              ))}
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {systemInterfaces.map((project) => (
+                  <a
+                    key={project.name}
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open project: ${project.name}`}
+                    className="block cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-2.5 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="text-sm text-cyan-100 break-words">{project.name}</h3>
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-emerald-200 shrink-0">open ↗</span>
+                    </div>
+                    <p className="mt-1 text-xs text-slate-300">{project.description}</p>
+                    <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-slate-400">{project.stack}</p>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -356,23 +358,25 @@ export default function Home() {
 
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.16em] text-cyan-300/80">System Interfaces</p>
-            {systemInterfaces.map((project) => (
-              <a
-                key={project.name}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open project: ${project.name}`}
-                className="block cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <h2 className="text-base text-cyan-200 sm:text-lg break-words">{project.name}</h2>
-                  <span className="text-sm text-emerald-200 shrink-0">open ↗</span>
-                </div>
-                <p className="mt-1 text-sm text-slate-300">{project.description}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.14em] text-slate-400">{project.stack}</p>
-              </a>
-            ))}
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {systemInterfaces.map((project) => (
+                <a
+                  key={project.name}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open project: ${project.name}`}
+                  className="block cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-3 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <h2 className="text-sm text-cyan-200 break-words">{project.name}</h2>
+                    <span className="text-[10px] uppercase tracking-[0.12em] text-emerald-200 shrink-0">open ↗</span>
+                  </div>
+                  <p className="mt-1 text-xs text-slate-300">{project.description}</p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.14em] text-slate-400">{project.stack}</p>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       );
