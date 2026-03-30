@@ -87,7 +87,7 @@ export default function Home() {
 
     container.scrollTo({
       top: Math.max(0, scrollTarget),
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
   }, [history]);
 
@@ -153,7 +153,8 @@ export default function Home() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block rounded-lg border border-white/10 bg-white/[0.03] p-3 transition hover:border-cyan-300/40 hover:bg-white/[0.06] cursor-pointer overflow-hidden"
+                  aria-label={`Open project: ${project.name}`}
+                  className="block cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-3 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <h3 className="text-cyan-100 break-words">{project.name}</h3>
@@ -167,10 +168,10 @@ export default function Home() {
           </div>
 
           <div className="space-y-1 rounded-lg border border-indigo-300/25 bg-indigo-400/10 p-3 text-sm text-indigo-100">
-            <p><a href="mailto:apoorvs756@gmail.com" className="underline hover:text-indigo-50 break-all">apoorvs756@gmail.com</a></p>
-            <p>(+91) 9972118451</p>
-            <p><a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">github.com/apoorv-x12</a></p>
-            <p><a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">linkedin.com/in/apoorvshrivastava</a></p>
+            <p>📧 <a href="mailto:apoorvs756@gmail.com" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">apoorvs756@gmail.com</a></p>
+            <p>📞 (+91) 9972118451</p>
+            <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">github.com/apoorv-x12</a></p>
+            <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">linkedin.com/in/apoorvshrivastava</a></p>
           </div>
         </section>
       );
@@ -233,7 +234,8 @@ export default function Home() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] cursor-pointer overflow-hidden"
+              aria-label={`Open project: ${project.name}`}
+              className="block cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <h2 className="text-base text-cyan-200 sm:text-lg break-words">{project.name}</h2>
@@ -249,10 +251,10 @@ export default function Home() {
 
     return (
       <footer className="space-y-2 rounded-xl border border-indigo-300/20 bg-indigo-400/10 p-4 text-sm text-indigo-100">
-        <p>📧 <a href="mailto:apoorvs756@gmail.com" className="underline hover:text-indigo-50 break-all">apoorvs756@gmail.com</a></p>
+        <p>📧 <a href="mailto:apoorvs756@gmail.com" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">apoorvs756@gmail.com</a></p>
         <p>📞 (+91) 9972118451</p>
-        <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">github.com/apoorv-x12</a></p>
-        <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">linkedin.com/in/apoorvshrivastava</a></p>
+        <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">github.com/apoorv-x12</a></p>
+        <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">linkedin.com/in/apoorvshrivastava</a></p>
       </footer>
     );
   };
@@ -281,7 +283,7 @@ export default function Home() {
                 key={item.key}
                 type="button"
                 onClick={() => runCommand(item.key)}
-                className="rounded-md border border-cyan-300/30 bg-cyan-500/10 px-3 py-1.5 text-xs text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-400/20 sm:text-sm"
+                className="rounded-md border border-cyan-300/30 bg-cyan-500/10 px-3 py-1.5 text-xs text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#051019] sm:text-sm"
               >
                 {item.label}
               </button>
@@ -294,8 +296,8 @@ export default function Home() {
             <p className="text-slate-400">Terminal reset. Click overview for the full profile or run any command.</p>
           ) : null}
 
-          {history.map((entry) => (
-            <div key={entry.id} className="animate-fade-up space-y-3">
+          {history.map((entry, index) => (
+            <div key={entry.id} className="animate-fade-up space-y-3" style={{ animationDelay: `${Math.min(index * 70, 280)}ms` }}>
               <div
                 ref={entry.id === history[history.length - 1]?.id ? latestCommandLineRef : null}
                 className="terminal-line"
