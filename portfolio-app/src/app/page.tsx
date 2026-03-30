@@ -125,7 +125,7 @@ export default function Home() {
             <p><span className="text-cyan-200">Experience:</span> Software Engineer @ Eli Lilly (2023–2026)</p>
             <p><span className="text-cyan-200">Education:</span> B.Tech CSE — VIT (CGPA: 9.18)</p>
             <p><span className="text-cyan-200">Open to:</span> Backend / Full Stack · Startups · AI products · Remote &amp; Contract</p>
-            <p><span className="text-cyan-200">Location:</span> Gwalior · Remote-friendly</p>
+            <p><span className="text-cyan-200">Location:</span> India</p>
           </div>
 
           <div>
@@ -198,7 +198,7 @@ export default function Home() {
             LLM-powered applications and cloud-native architectures.
           </p>
           <div className="text-sm text-slate-300 space-y-1">
-            <p>📍 Gwalior, India</p>
+            <p>📍 India</p>
             <p>🏢 Previously: Software Engineer @ <span className="text-cyan-200">Eli Lilly</span> (Jul 2023 – Jan 2026)</p>
             <p>🎓 B.Tech CSE — <span className="text-cyan-200">VIT</span> · CGPA 9.18</p>
           </div>
