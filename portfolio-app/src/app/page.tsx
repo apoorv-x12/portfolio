@@ -132,11 +132,13 @@ export default function Home() {
             <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan-200/80">Core Skills</p>
             <div className="space-y-2">
               {Object.entries(skills).map(([category, items]) => (
-                <div key={category} className="flex flex-wrap items-center gap-2">
-                  <span className="w-20 shrink-0 text-xs uppercase tracking-[0.12em] text-cyan-300/70">{category}</span>
-                  {items.map((s) => (
-                    <span key={s} className="rounded-md border border-emerald-300/25 bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-100">{s}</span>
-                  ))}
+                <div key={category} className="space-y-1.5">
+                  <span className="block text-xs uppercase tracking-[0.12em] text-cyan-300/70">{category}</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {items.map((s) => (
+                      <span key={s} className="rounded-md border border-emerald-300/25 bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-100 max-w-full break-words">{s}</span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -151,11 +153,11 @@ export default function Home() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block rounded-lg border border-white/10 bg-white/[0.03] p-3 transition hover:border-cyan-300/40 hover:bg-white/[0.06] cursor-pointer"
+                  className="block rounded-lg border border-white/10 bg-white/[0.03] p-3 transition hover:border-cyan-300/40 hover:bg-white/[0.06] cursor-pointer overflow-hidden"
                 >
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-cyan-100">{project.name}</h3>
-                    <span className="text-xs uppercase tracking-[0.12em] text-emerald-200">open ↗</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <h3 className="text-cyan-100 break-words">{project.name}</h3>
+                    <span className="text-xs uppercase tracking-[0.12em] text-emerald-200 shrink-0">open ↗</span>
                   </div>
                   <p className="text-sm text-slate-300">{project.description}</p>
                   <p className="mt-1 text-xs uppercase tracking-[0.12em] text-slate-400">{project.stack}</p>
@@ -165,15 +167,10 @@ export default function Home() {
           </div>
 
           <div className="space-y-1 rounded-lg border border-indigo-300/25 bg-indigo-400/10 p-3 text-sm text-indigo-100">
-            <p>
-              <a href="mailto:apoorvs756@gmail.com" className="underline hover:text-indigo-50">apoorvs756@gmail.com</a>
-              {" · "}(+91) 9972118451
-            </p>
-            <p>
-              <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50">github.com/apoorv-x12</a>
-              {" · "}
-              <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50">linkedin.com/in/apoorvshrivastava</a>
-            </p>
+            <p><a href="mailto:apoorvs756@gmail.com" className="underline hover:text-indigo-50 break-all">apoorvs756@gmail.com</a></p>
+            <p>(+91) 9972118451</p>
+            <p><a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">github.com/apoorv-x12</a></p>
+            <p><a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">linkedin.com/in/apoorvshrivastava</a></p>
           </div>
         </section>
       );
@@ -218,7 +215,7 @@ export default function Home() {
               <p className="mb-1.5 text-xs uppercase tracking-[0.16em] text-cyan-300/80">{category}</p>
               <div className="flex flex-wrap gap-2">
                 {items.map((s) => (
-                  <span key={s} className="rounded-md border border-emerald-300/25 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-100">{s}</span>
+                  <span key={s} className="rounded-md border border-emerald-300/25 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-100 max-w-full break-words">{s}</span>
                 ))}
               </div>
             </div>
@@ -236,11 +233,11 @@ export default function Home() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] cursor-pointer"
+              className="block rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] cursor-pointer overflow-hidden"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="text-base text-cyan-200 sm:text-lg">{project.name}</h2>
-                <span className="text-sm text-emerald-200">open ↗</span>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <h2 className="text-base text-cyan-200 sm:text-lg break-words">{project.name}</h2>
+                <span className="text-sm text-emerald-200 shrink-0">open ↗</span>
               </div>
               <p className="mt-1 text-sm text-slate-300">{project.description}</p>
               <p className="mt-2 text-xs uppercase tracking-[0.14em] text-slate-400">{project.stack}</p>
@@ -252,10 +249,10 @@ export default function Home() {
 
     return (
       <footer className="space-y-2 rounded-xl border border-indigo-300/20 bg-indigo-400/10 p-4 text-sm text-indigo-100">
-        <p>📧 <a href="mailto:apoorvs756@gmail.com" className="underline hover:text-indigo-50">apoorvs756@gmail.com</a></p>
+        <p>📧 <a href="mailto:apoorvs756@gmail.com" className="underline hover:text-indigo-50 break-all">apoorvs756@gmail.com</a></p>
         <p>📞 (+91) 9972118451</p>
-        <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50">github.com/apoorv-x12</a></p>
-        <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50">linkedin.com/in/apoorvshrivastava</a></p>
+        <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">github.com/apoorv-x12</a></p>
+        <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50 break-all">linkedin.com/in/apoorvshrivastava</a></p>
       </footer>
     );
   };
@@ -266,14 +263,14 @@ export default function Home() {
       <div className="pointer-events-none absolute -right-24 bottom-12 h-80 w-80 rounded-full bg-emerald-500/15 blur-3xl" />
 
       <section className="terminal-shell w-full max-w-5xl overflow-hidden rounded-2xl border border-white/15 shadow-[0_24px_100px_rgba(0,0,0,0.55)]">
-        <header className="flex items-center justify-between border-b border-white/10 bg-[#0a1118] px-4 py-3">
-          <div className="flex items-center gap-2">
+        <header className="flex items-center justify-between gap-2 border-b border-white/10 bg-[#0a1118] px-4 py-3">
+          <div className="hidden sm:flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]" />
           </div>
-          <p className="text-xs tracking-[0.2em] text-cyan-200/80">APOORV-X12@PORTFOLIO: ~</p>
-          <span className="text-xs text-slate-400">zsh</span>
+          <p className="text-xs tracking-[0.1em] text-cyan-200/80 truncate">APOORV-X12@PORTFOLIO: ~</p>
+          <span className="text-xs text-slate-400 shrink-0">zsh</span>
         </header>
 
         <div className="border-b border-white/10 bg-[#051019] px-4 py-3 sm:px-8">

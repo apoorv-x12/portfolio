@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Terminal-style portfolio of Apoorv Shrivastava — Backend & Full-Stack Engineer, Eli Lilly alumni, VIT CSE.",
 };
 
+export const viewport = "width=device-width, initial-scale=1";
+
 export default function RootLayout({
   children,
 }: Readonly<{
