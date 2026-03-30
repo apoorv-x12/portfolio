@@ -147,9 +147,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-indigo-300/25 bg-indigo-400/10 p-3 text-sm text-indigo-100">
-            <p>apoorvs756@gmail.com · (+91) 9972118451</p>
-            <p>GitHub: github.com/apoorv-x12 · LinkedIn: linkedin.com/in/apoorvshrivastava</p>
+          <div className="space-y-1 rounded-lg border border-indigo-300/25 bg-indigo-400/10 p-3 text-sm text-indigo-100">
+            <p>
+              <a href="mailto:apoorvs756@gmail.com" className="underline hover:text-indigo-50">apoorvs756@gmail.com</a>
+              {" · "}(+91) 9972118451
+            </p>
+            <p>
+              <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50">github.com/apoorv-x12</a>
+              {" · "}
+              <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-50">linkedin.com/in/apoorvshrivastava</a>
+            </p>
           </div>
         </section>
       );
