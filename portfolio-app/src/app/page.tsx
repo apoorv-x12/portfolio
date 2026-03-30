@@ -92,7 +92,7 @@ const systemInterfaces = [
     name: "Flower Shop Next",
     description:
       "A modern and responsive frontend built with Next.js for a local flower shop.",
-    stack: "Next.js, TypeScript, GitHub Actions",
+    stack: "Next.js, JavaScript, GitHub Actions",
     link: "https://apoorv-x12.github.io/flower-shop-next/",
   },
   {
