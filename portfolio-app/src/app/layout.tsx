@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Apoorv | Terminal Portfolio",
-  description: "A terminal-style portfolio built with Next.js",
+  title: "Apoorv Shrivastava | Software Engineer",
+  description: "Terminal-style portfolio of Apoorv Shrivastava — Backend & Full-Stack Engineer, Eli Lilly alumni, VIT CSE.",
 };
 
 export default function RootLayout({
