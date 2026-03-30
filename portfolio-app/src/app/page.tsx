@@ -10,11 +10,28 @@ type HistoryEntry = {
 };
 
 const skills = {
-  backend: ["Python", "FastAPI", "Django", "Node.js", "REST APIs", "GraphQL"],
+  backend: [
+    "Python",
+    "FastAPI",
+    "Django",
+    "Node.js",
+    "REST APIs",
+    "GraphQL",
+    "Distributed systems",
+    "Async workflows",
+  ],
   databases: ["PostgreSQL", "DynamoDB", "SQL"],
-  frontend: ["React", "Vue.js", "TypeScript", "JavaScript", "TailwindCSS"],
-  infra: ["AWS Lambda", "ECS Fargate", "S3", "CloudFormation", "Docker", "CI/CD"],
+  frontend: [
+    "Next.js",
+    "React",
+    "Vue.js",
+    "TypeScript",
+    "JavaScript",
+    "TailwindCSS",
+    "State management (client/server state)",
+  ],
   ai: ["RAG Pipelines", "Vector Search", "LangGraph", "Embeddings", "Agent Workflows"],
+  infra: ["AWS Lambda", "ECS Fargate", "S3", "CloudFormation", "Docker", "CI/CD"],
 };
 
 const projects = [
