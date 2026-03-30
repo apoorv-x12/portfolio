@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Command = "all" | "help" | "about" | "skills" | "projects" | "contact" | "clear";
+type Command = "all" | "help" | "about" | "experience" | "skills" | "projects" | "contact" | "clear";
 
 type HistoryEntry = {
   id: number;
@@ -14,41 +14,73 @@ const skills = {
     "Python",
     "FastAPI",
     "Django",
-    "Node.js",
-    "REST APIs",
-    "GraphQL",
-    "Distributed systems",
-    "Async workflows",
+    "REST & GraphQL APIs",
+    "Asynchronous systems",
+    "Idempotency",
+    "Retries",
   ],
-  databases: ["PostgreSQL", "DynamoDB", "SQL"],
+  databases: [
+    "PostgreSQL (schema design, joins, indexing, transactions)",
+    "DynamoDB",
+  ],
+  "distributed systems": [
+    "Workflow orchestration",
+    "State machines",
+    "Failure recovery",
+    "Idempotent processing",
+  ],
+  "cloud & devops": [
+    "AWS (ECS Fargate, Lambda, API Gateway, S3, SQS)",
+    "Docker",
+    "CloudFormation",
+    "CI/CD",
+  ],
+  "ai / llm": [
+    "RAG pipelines",
+    "Embeddings",
+    "Vector search",
+    "LangGraph",
+    "Agent workflows",
+  ],
   frontend: [
-    "Next.js",
     "React",
-    "Vue.js",
+    "Next.js",
+    "Vue",
     "TypeScript",
-    "JavaScript",
-    "TailwindCSS",
-    "State management (client/server state)",
+    "State management (Redux Toolkit / Zustand)",
+    "TanStack Query",
   ],
-  ai: ["RAG Pipelines", "Vector Search", "LangGraph", "Embeddings", "Agent Workflows"],
-  infra: ["AWS Lambda", "ECS Fargate", "S3", "CloudFormation", "Docker", "CI/CD"],
 };
 
-const projects = [
+const lillyExperience = [
+  "Owned end-to-end distributed backend services using FastAPI, from API design and data modeling to deployment and monitoring, supporting internal products used by multiple teams.",
+  "Designed concurrency-safe event-driven workflows, explicitly reasoning about request isolation, retries, and failure handling in multi-step async systems.",
+  "Optimized PostgreSQL queries (joins, batching, indexing) for large datasets (millions of rows), reducing backend latency by ~30-40%.",
+  "Diagnosed and resolved production issues involving timeouts, partial failures, and inconsistent data using logs, metrics, and careful system reasoning.",
+  "Deployed and operated cloud-native services using Docker and AWS (ECS Fargate, Lambda [Python, Node.js], API Gateway, S3, SQS) with CI/CD via GitHub Actions and monitoring through CloudWatch.",
+  "Integrated LLM-backed workflows (RAG, embeddings, vector search, LangGraph) into backend systems with emphasis on predictable APIs, evaluation, and reliability, not prompt-only experimentation.",
+  "Built complex React/Vue interfaces (dashboards, multi-step forms, graph- and flow-based UIs), managing client-side and server-side state for REST, async, and AI-driven workflows, and reducing end-to-end load times by ~25-30% while keeping backend contracts and data integrity central.",
+  "Made deliberate design tradeoffs between sync and async processing to balance latency, throughput, and reliability under burst traffic.",
+];
+
+const featuredSystems = [
   {
     name: "Distributed Workflow Orchestration Engine",
     description:
-      "Deterministic workflow engine with durable state transitions and idempotent step execution. Supports retries, failure recovery, and horizontal scaling via stateless workers.",
+      "Built a distributed workflow orchestration engine using FastAPI and PostgreSQL for reliable execution of long-running processes, with atomic step claiming for concurrency-safe multi-worker processing, durable state-machine transitions for crash recovery, idempotent execution with retry tracking and exponential backoff, and horizontal scaling via stateless workers coordinated through shared database state.",
     stack: "FastAPI, PostgreSQL, Docker",
     link: "https://github.com/apoorv-x12/workflow-engine",
   },
   {
     name: "Multi-Tenant Project Manager",
     description:
-      "Multi-tenant project management system with role-based access control, clean API design, and a typed React frontend.",
-    stack: "Django, PostgreSQL, React, TypeScript",
+      "A multi-tenant project management system with a Django backend, PostgreSQL, and a typed React frontend. Focused on multi-tenancy, role-based access, and clean API design.",
+    stack: "Django, PostgreSQL, GraphQL APIs, React (TypeScript)",
     link: "https://github.com/apoorv-x12/muti-tenant-project-manager",
   },
+];
+
+const systemInterfaces = [
   {
     name: "npm-stats-viz",
     description:
@@ -56,12 +88,27 @@ const projects = [
     stack: "React, TypeScript, Charts",
     link: "https://apoorv-x12.github.io/npm-stats-viz/",
   },
+  {
+    name: "Flower Shop Next",
+    description:
+      "A modern and responsive frontend built with Next.js for a local flower shop.",
+    stack: "Next.js, React, TypeScript",
+    link: "https://apoorv-x12.github.io/flower-shop-next/",
+  },
+  {
+    name: "Terminal Portfolio (This Site)",
+    description:
+      "Interactive terminal-style portfolio built with Next.js and TypeScript, featuring command-driven UI state, responsive layout, and deployment via GitHub Pages CI/CD.",
+    stack: "Next.js, TypeScript, State-driven UI, GitHub Actions",
+    link: "https://apoorv-x12.github.io/portfolio/",
+  },
 ];
 
 const commandList: Array<{ key: Command; label: string }> = [
   { key: "all", label: "overview" },
   { key: "help", label: "how it works" },
   { key: "about", label: "about me" },
+  { key: "experience", label: "experience" },
   { key: "skills", label: "skills" },
   { key: "projects", label: "projects" },
   { key: "contact", label: "contact" },
@@ -129,25 +176,32 @@ export default function Home() {
           </div>
 
           <div>
-            <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan-200/80">Core Skills</p>
+            <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan-200/80">Selected Projects</p>
+
             <div className="space-y-2">
-              {Object.entries(skills).map(([category, items]) => (
-                <div key={category} className="space-y-1.5">
-                  <span className="block text-xs uppercase tracking-[0.12em] text-cyan-300/70">{category}</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {items.map((s) => (
-                      <span key={s} className="rounded-md border border-emerald-300/25 bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-100 max-w-full break-words">{s}</span>
-                    ))}
+              <p className="text-xs uppercase tracking-[0.12em] text-cyan-300/70">Featured Systems</p>
+              {featuredSystems.map((project) => (
+                <a
+                  key={project.name}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open project: ${project.name}`}
+                  className="block cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-3 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <h3 className="text-cyan-100 break-words">{project.name}</h3>
+                    <span className="text-xs uppercase tracking-[0.12em] text-emerald-200 shrink-0">open ↗</span>
                   </div>
-                </div>
+                  <p className="text-sm text-slate-300">{project.description}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.12em] text-slate-400">{project.stack}</p>
+                </a>
               ))}
             </div>
-          </div>
 
-          <div>
-            <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan-200/80">Selected Projects</p>
-            <div className="space-y-2">
-              {projects.map((project) => (
+            <div className="mt-3 space-y-2">
+              <p className="text-xs uppercase tracking-[0.12em] text-cyan-300/70">System Interfaces</p>
+              {systemInterfaces.map((project) => (
                 <a
                   key={project.name}
                   href={project.link}
@@ -167,12 +221,46 @@ export default function Home() {
             </div>
           </div>
 
+          <div>
+            <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan-200/80">Experience @ Eli Lilly</p>
+            <div className="space-y-2 rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm text-slate-100">
+              <p className="text-slate-200">
+                Owned end-to-end distributed backend services using FastAPI, PostgreSQL, and AWS for internal products used by multiple teams, covering API design, data modeling, deployment, monitoring, and production reliability.
+              </p>
+              <p className="text-slate-300">
+                Core signals: concurrency-safe event-driven workflows, request isolation, idempotency, retries, failure handling, PostgreSQL optimization at million-row scale, cloud-native operation on ECS Fargate/Lambda/API Gateway/S3/SQS, and deliberate sync-vs-async design tradeoffs under burst traffic.
+              </p>
+              <p className="text-slate-300">
+                Also integrated reliable LLM-backed workflows using RAG, embeddings, vector search, and LangGraph, while building React/Vue interfaces around backend contracts and async systems.
+              </p>
+              <p className="text-sm text-cyan-200">Use the experience command for the full work summary.</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan-200/80">Core Skills</p>
+            <div className="space-y-2">
+              {Object.entries(skills).map(([category, items]) => (
+                <div key={category} className="space-y-1.5">
+                  <span className="block text-xs uppercase tracking-[0.12em] text-cyan-300/70">{category}</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {items.map((s) => (
+                      <span key={s} className="rounded-md border border-emerald-300/25 bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-100 max-w-full break-words">{s}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-1 rounded-lg border border-indigo-300/25 bg-indigo-400/10 p-3 text-sm text-indigo-100">
             <p>📧 <a href="mailto:apoorvs756@gmail.com" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">apoorvs756@gmail.com</a></p>
             <p>📞 (+91) 9972118451</p>
+            <p>📄 <a href="https://drive.google.com/file/d/1WayhpEQit8GLjyjcf2MU362Gq0unbDzR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">Resume</a></p>
             <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">github.com/apoorv-x12</a></p>
             <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">linkedin.com/in/apoorvshrivastava</a></p>
           </div>
+
         </section>
       );
     }
@@ -208,6 +296,23 @@ export default function Home() {
       );
     }
 
+    if (command === "experience") {
+      return (
+        <div className="space-y-3 rounded-xl border border-cyan-400/20 bg-cyan-500/5 p-4 text-cyan-50">
+          <p className="text-xs uppercase tracking-[0.16em] text-cyan-300/80">Experience @ Eli Lilly</p>
+          <p className="text-sm text-slate-300">Software Engineer (2023-2026)</p>
+          <div className="space-y-2 rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm text-slate-100">
+            {lillyExperience.map((item) => (
+              <p key={item} className="text-sm text-slate-200">
+                <span className="mr-2 text-cyan-300">•</span>
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
     if (command === "skills") {
       return (
         <div className="space-y-3 rounded-xl border border-cyan-400/20 bg-cyan-500/5 p-4">
@@ -228,23 +333,47 @@ export default function Home() {
     if (command === "projects") {
       return (
         <div className="space-y-3">
-          {projects.map((project) => (
-            <a
-              key={project.name}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open project: ${project.name}`}
-              className="block cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <h2 className="text-base text-cyan-200 sm:text-lg break-words">{project.name}</h2>
-                <span className="text-sm text-emerald-200 shrink-0">open ↗</span>
-              </div>
-              <p className="mt-1 text-sm text-slate-300">{project.description}</p>
-              <p className="mt-2 text-xs uppercase tracking-[0.14em] text-slate-400">{project.stack}</p>
-            </a>
-          ))}
+          <div className="space-y-2">
+            <p className="text-xs uppercase tracking-[0.16em] text-cyan-300/80">Featured Systems</p>
+            {featuredSystems.map((project) => (
+              <a
+                key={project.name}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open project: ${project.name}`}
+                className="block cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <h2 className="text-base text-cyan-200 sm:text-lg break-words">{project.name}</h2>
+                  <span className="text-sm text-emerald-200 shrink-0">open ↗</span>
+                </div>
+                <p className="mt-1 text-sm text-slate-300">{project.description}</p>
+                <p className="mt-2 text-xs uppercase tracking-[0.14em] text-slate-400">{project.stack}</p>
+              </a>
+            ))}
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-xs uppercase tracking-[0.16em] text-cyan-300/80">System Interfaces</p>
+            {systemInterfaces.map((project) => (
+              <a
+                key={project.name}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open project: ${project.name}`}
+                className="block cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-cyan-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 motion-safe:duration-200 motion-safe:hover:-translate-y-0.5"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <h2 className="text-base text-cyan-200 sm:text-lg break-words">{project.name}</h2>
+                  <span className="text-sm text-emerald-200 shrink-0">open ↗</span>
+                </div>
+                <p className="mt-1 text-sm text-slate-300">{project.description}</p>
+                <p className="mt-2 text-xs uppercase tracking-[0.14em] text-slate-400">{project.stack}</p>
+              </a>
+            ))}
+          </div>
         </div>
       );
     }
@@ -253,6 +382,7 @@ export default function Home() {
       <footer className="space-y-2 rounded-xl border border-indigo-300/20 bg-indigo-400/10 p-4 text-sm text-indigo-100">
         <p>📧 <a href="mailto:apoorvs756@gmail.com" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">apoorvs756@gmail.com</a></p>
         <p>📞 (+91) 9972118451</p>
+        <p>📄 <a href="https://drive.google.com/file/d/1WayhpEQit8GLjyjcf2MU362Gq0unbDzR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">Resume</a></p>
         <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">github.com/apoorv-x12</a></p>
         <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">linkedin.com/in/apoorvshrivastava</a></p>
       </footer>
