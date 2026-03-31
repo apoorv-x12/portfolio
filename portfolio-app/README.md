@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio App
+
+A personal portfolio built with Next.js (App Router), React, and TypeScript.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses Next.js with the App Router in `src/app`:
 
-## Learn More
+- `src/app/layout.tsx` defines the shared root layout.
+- `src/app/page.tsx` is the home page.
+- `src/app/globals.css` contains global styles.
 
-To learn more about Next.js, take a look at the following resources:
+### Commands
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev`: Starts the local development server with hot reload.
+- `npm run build`: Creates an optimized production build in `.next`.
+- `npm run start`: Runs the production server from the build output.
+  This is non-obvious: it does not build the app first, so run `npm run build` before this command.
+- `npm run lint`: Runs ESLint checks for code quality and common issues.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Production Flow
 
-## Deploy on Vercel
+Use this order for production-like testing:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```

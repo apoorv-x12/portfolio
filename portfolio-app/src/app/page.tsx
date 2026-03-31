@@ -118,6 +118,7 @@ const commandList: Array<{ key: Command; label: string }> = [
 export default function Home() {
   const [history, setHistory] = useState<HistoryEntry[]>([{ id: 1, command: "all" }]);
   const [nextId, setNextId] = useState(2);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const outputContainerRef = useRef<HTMLDivElement | null>(null);
   const latestCommandLineRef = useRef<HTMLDivElement | null>(null);
 
@@ -139,6 +140,8 @@ export default function Home() {
   }, [history]);
 
   const runCommand = (command: Command) => {
+    setHasInteracted(true);
+
     if (command === "clear") {
       setHistory(() => {
         const currentId = nextId;
@@ -269,10 +272,18 @@ export default function Home() {
 
     if (command === "help") {
       return (
-        <div className="rounded-xl border border-cyan-400/20 bg-cyan-500/5 p-4 text-cyan-100">
+        <div className="space-y-3 rounded-xl border border-cyan-400/20 bg-cyan-500/5 p-4 text-cyan-100">
           <p>Welcome to Apoorv&apos;s interactive terminal portfolio.</p>
-          <p className="text-cyan-200">Click any command chip above to print output automatically.</p>
-          <p className="text-cyan-300">Tip: use overview for a complete summary.</p>
+          <p className="text-cyan-200">Click any command chip above to append that section in the terminal output.</p>
+
+          <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm text-slate-200 space-y-1.5">
+            <p><span className="text-cyan-200">overview</span> - Prints the complete profile snapshot (best first command).</p>
+            <p><span className="text-cyan-200">how it works</span> - Shows this command guide.</p>
+            <p><span className="text-cyan-200">about / experience / skills / projects / contact</span> - Prints only that section.</p>
+            <p><span className="text-cyan-200">reset</span> - Clears previous output and starts again with a fresh overview.</p>
+          </div>
+
+          <p className="text-cyan-300">Non-obvious behavior: commands stack in history, so use reset when you want a clean screen.</p>
         </div>
       );
     }
@@ -410,14 +421,24 @@ export default function Home() {
         </header>
 
         <div className="border-b border-white/10 bg-[#051019] px-4 py-3 sm:px-8">
-          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-slate-400">Click To Run Commands</p>
+          <p className="mb-1 text-xs uppercase tracking-[0.2em] text-slate-400">Click To Run Commands</p>
+          <p className="mb-2 flex flex-wrap items-center gap-1.5 text-xs text-cyan-200/85">
+            <span>Click</span>
+            <span className="rounded border border-cyan-300/30 bg-cyan-500/10 px-1.5 py-0.5 text-cyan-100">how it works</span>
+            <span>to learn each command.</span>
+          </p>
           <div className="flex flex-wrap gap-2">
             {commandList.map((item) => (
               <button
                 key={item.key}
                 type="button"
                 onClick={() => runCommand(item.key)}
-                className="rounded-md border border-cyan-300/30 bg-cyan-500/10 px-3 py-1.5 text-xs text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#051019] sm:text-sm"
+                style={
+                  !hasInteracted && item.key === "help"
+                    ? { animation: "chip-bright-pulse 1.25s ease-in-out infinite", willChange: "background-color, border-color, box-shadow" }
+                    : undefined
+                }
+                className="cursor-pointer rounded-md border border-cyan-300/30 bg-cyan-500/10 px-3 py-1.5 text-xs text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#051019] sm:text-sm"
               >
                 {item.label}
               </button>
