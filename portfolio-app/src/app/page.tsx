@@ -82,6 +82,13 @@ const featuredSystems = [
 
 const systemInterfaces = [
   {
+    name: "CalcHub",
+    description:
+      "A growing library of free online calculators covering math, geometry, and everyday calculations. Built for instant, accurate, privacy-friendly results with all calculations running entirely in the browser.",
+    stack: "Web App, Client-side calculations",
+    link: "https://calchubai.com",
+  },
+  {
     name: "npm-stats-viz",
     description:
       "Visualizes npm package download trends over time with interactive graphs and bar chart comparisons across packages.",
