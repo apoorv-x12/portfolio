@@ -260,7 +260,6 @@ export default function Home() {
 
           <div className="space-y-1 rounded-lg border border-indigo-300/25 bg-indigo-400/10 p-3 text-sm text-indigo-100">
             <p>📧 <a href="mailto:apoorvs756@gmail.com" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">apoorvs756@gmail.com</a></p>
-            <p>📞 (+91) 9972118451</p>
             <p>📄 <a href="https://drive.google.com/file/d/1WayhpEQit8GLjyjcf2MU362Gq0unbDzR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">Resume</a></p>
             <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">github.com/apoorv-x12</a></p>
             <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">linkedin.com/in/apoorvshrivastava</a></p>
@@ -396,7 +395,6 @@ export default function Home() {
     return (
       <footer className="space-y-2 rounded-xl border border-indigo-300/20 bg-indigo-400/10 p-4 text-sm text-indigo-100">
         <p>📧 <a href="mailto:apoorvs756@gmail.com" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">apoorvs756@gmail.com</a></p>
-        <p>📞 (+91) 9972118451</p>
         <p>📄 <a href="https://drive.google.com/file/d/1WayhpEQit8GLjyjcf2MU362Gq0unbDzR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">Resume</a></p>
         <p>🐙 <a href="https://github.com/apoorv-x12" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">github.com/apoorv-x12</a></p>
         <p>💼 <a href="https://www.linkedin.com/in/apoorvshrivastava" target="_blank" rel="noopener noreferrer" className="break-all underline hover:text-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80">linkedin.com/in/apoorvshrivastava</a></p>
