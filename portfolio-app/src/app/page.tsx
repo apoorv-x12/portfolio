@@ -109,6 +109,13 @@ const systemInterfaces = [
     stack: "Next.js, State-driven UI",
     link: "https://apoorv-x12.github.io/portfolio/",
   },
+  {
+    name: "Blossom Hug",
+    description:
+      "A digital storefront for a local small business specializing in handcrafted, pipe-cleaner based flowers.",
+    stack: "Web App, E-commerce",
+    link: "https://flower-shop-next.vercel.app/",
+  },
 ];
 
 const commandList: Array<{ key: Command; label: string }> = [
